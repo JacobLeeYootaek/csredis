@@ -535,6 +535,14 @@ namespace CSRedis
                 : new[] { key, start.ToString(), stop.ToString() };
             return new RedisArray.Strings("ZRANGE", args);
         }
+        public static RedisTuple.Generic<string, double>.Single ZPopMin(string key)
+        {
+            return new RedisTuple.Generic<string, double>.Single(new RedisString(null), new RedisString.Double(null), "ZPOPMIN", key);
+        }
+        public static RedisTuple.Generic<string, double>.Single ZPopMax(string key)
+        {
+            return new RedisTuple.Generic<string, double>.Single(new RedisString(null), new RedisString.Double(null), "ZPOPMAX", key);
+        }
         public static RedisArray.WeakPairs<string, double> ZRangeWithScores(string key, long start, long stop)
         {
             return new RedisArray.WeakPairs<string, double>("ZRANGE", key, start, stop, "WITHSCORES");

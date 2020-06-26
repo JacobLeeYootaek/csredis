@@ -999,6 +999,26 @@ namespace CSRedis
 
 
         /// <summary>
+        /// Pop minimum member in a sorted set
+        /// </summary>
+        /// <param name="key">Sorted set key</param>
+        /// <returns>element that has minimum score </returns>
+        Task<Tuple<string, double>> ZPopMinAsync(string key);
+
+
+
+
+        /// <summary>
+        /// Pop maximum member in a sorted set
+        /// </summary>
+        /// <param name="key">Sorted set key</param>
+        /// <returns>element that has maximum score </returns>
+        Task<Tuple<string, double>> ZPopMaxAsync(string key);
+
+
+
+
+        /// <summary>
         /// Return a range of members in a sorted set, by index, with scores
         /// </summary>
         /// <param name="key">Sorted set key</param>

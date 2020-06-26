@@ -43,6 +43,18 @@ namespace CSRedis.Internal.Commands
             }
         }
 
+        public class Double : RedisCommand<double>
+        {
+            public Double(string command, params object[] args)
+                : base(command, args)
+            { }
+
+            public override double Parse(RedisReader reader)
+            {
+                return double.Parse(reader.ReadBulkString());
+            }
+        }
+
         public class Converter<T> : RedisCommand<T>
         {
             static Lazy<TypeConverter> converter

@@ -955,7 +955,7 @@ namespace CSRedis
 
 
 
-
+         
         /// <summary>
         ///
         /// </summary>
@@ -965,6 +965,26 @@ namespace CSRedis
         /// <param name="withScores">Include scores in result</param>
         /// <returns>Array of elements in the specified range (with optional scores);</returns>
         string[] ZRange(string key, long start, long stop, bool withScores = false);
+
+
+
+
+        /// <summary>
+        /// Pop minimum member in a sorted set
+        /// </summary>
+        /// <param name="key">Sorted set key</param>
+        /// <returns>element that has minimum score </returns>
+        Tuple<string, double> ZPopMin(string key);
+
+
+
+
+        /// <summary>
+        /// Pop maximum member in a sorted set
+        /// </summary>
+        /// <param name="key">Sorted set key</param>
+        /// <returns>element that has maximum score </returns>
+        Tuple<string, double> ZPopMax(string key);
 
 
 

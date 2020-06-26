@@ -1017,6 +1017,26 @@ namespace CSRedis
         }
 
         /// <summary>
+        /// Pop minimum member in a sorted set
+        /// </summary>
+        /// <param name="key">Sorted set key</param>
+        /// <returns>element that has minimum score </returns>
+        public Task<Tuple<string, double>> ZPopMinAsync(string key)
+        {
+            return WriteAsync(RedisCommands.ZPopMin(key));
+        }
+
+        /// <summary>
+        /// Pop maximum member in a sorted set
+        /// </summary>
+        /// <param name="key">Sorted set key</param>
+        /// <returns>element that has maximum score </returns>
+        public Task<Tuple<string, double>> ZPopMaxAsync(string key)
+        {
+            return WriteAsync(RedisCommands.ZPopMax(key));
+        }
+
+        /// <summary>
         /// Return a range of members in a sorted set, by score
         /// </summary>
         /// <param name="key">Sorted set key</param>
