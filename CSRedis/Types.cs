@@ -403,7 +403,7 @@ namespace CSRedis
             Port = info.GetInt32("port");
             RunId = info.GetString("runid");
             Flags = info.GetString("flags").Split(',');
-            PendingCommands = info.GetInt64("pending-commands");
+            PendingCommands = info.GetInt64("link-pending-commands");
             LastOkPingReply = info.GetInt64("last-ok-ping-reply");
             LastPingReply = info.GetInt64("last-ping-reply");
             DownAfterMilliseconds = info.GetInt64("down-after-milliseconds");
