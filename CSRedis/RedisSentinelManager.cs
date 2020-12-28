@@ -105,6 +105,29 @@ namespace CSRedis
             }
         }
 
+
+        /// <summary>
+        /// Execute command against the master, reconnecting if necessary
+        /// </summary>
+        /// <param name="redisAction">Command to execute</param>
+        /// <returns>Command result</returns>
+        public void CallWithoutReturn(Action<RedisClient> redisAction)
+        {
+            if (_masterName == null)
+                throw new InvalidOperationException("Master not set");
+
+            try
+            {
+                redisAction(_redisClient);
+            }
+            catch (IOException)
+            {
+                Next();
+                Connect(_masterName, _connectTimeout);
+                CallWithoutReturn(redisAction);
+            }
+        }
+
         /// <summary>
         /// Release resources held by the current RedisSentinelManager
         /// </summary>
